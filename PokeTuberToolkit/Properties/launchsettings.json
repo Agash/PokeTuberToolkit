@@ -1,0 +1,10 @@
+﻿{
+    "profiles": {
+      "PokeTuberToolkit (Package)": {
+        "commandName": "MsixPackage"
+      },
+      "PokeTuberToolkit (Unpackaged)": {
+        "commandName": "Project"
+      }
+    }
+}
