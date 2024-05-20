@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\YTLiveChat\YTLiveChat.csproj" />
+    <ProjectReference Include="..\PokeTuberToolkit.Data\PokeTuberToolkit.Data.csproj" />
+    <ProjectReference Include="..\PokeTuberToolkit.UI.Core\PokeTuberToolkit.UI.Core.csproj" />
+  </ItemGroup>
+
+</Project>
