@@ -1,0 +1,65 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeTuberToolkit.UI.Uno", "PokeTuberToolkit.UI.Uno\PokeTuberToolkit.UI.Uno.csproj", "{1737C3FA-A20D-45EF-9237-37D3FB3E3EC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeTuberToolkit.UI.Uno.Server", "PokeTuberToolkit.UI.Uno.Server\PokeTuberToolkit.UI.Uno.Server.csproj", "{A518FFDA-D9DA-48AA-A2C1-FBA2F7703596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeTuberToolkit.UI.Uno.DataContracts", "PokeTuberToolkit.UI.Uno.DataContracts\PokeTuberToolkit.UI.Uno.DataContracts.csproj", "{B6A8464F-4305-4BC9-BDF9-2262DD3BCCAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3483C3D7-46C5-4218-A9B1-F9E0AF59134B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PokeTuberToolkit.UI.Uno.UITests", "PokeTuberToolkit.UI.Uno.UITests\PokeTuberToolkit.UI.Uno.UITests.csproj", "{540DF514-4393-462A-92B2-5D74F5580921}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D39B16B1-020C-4D4B-B499-4D2EA83557D9}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		Directory.Packages.props = Directory.Packages.props
+		global.json = global.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1737C3FA-A20D-45EF-9237-37D3FB3E3EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1737C3FA-A20D-45EF-9237-37D3FB3E3EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1737C3FA-A20D-45EF-9237-37D3FB3E3EC7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1737C3FA-A20D-45EF-9237-37D3FB3E3EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1737C3FA-A20D-45EF-9237-37D3FB3E3EC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1737C3FA-A20D-45EF-9237-37D3FB3E3EC7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A518FFDA-D9DA-48AA-A2C1-FBA2F7703596}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A518FFDA-D9DA-48AA-A2C1-FBA2F7703596}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A518FFDA-D9DA-48AA-A2C1-FBA2F7703596}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A518FFDA-D9DA-48AA-A2C1-FBA2F7703596}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A518FFDA-D9DA-48AA-A2C1-FBA2F7703596}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A518FFDA-D9DA-48AA-A2C1-FBA2F7703596}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B6A8464F-4305-4BC9-BDF9-2262DD3BCCAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A8464F-4305-4BC9-BDF9-2262DD3BCCAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A8464F-4305-4BC9-BDF9-2262DD3BCCAB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B6A8464F-4305-4BC9-BDF9-2262DD3BCCAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A8464F-4305-4BC9-BDF9-2262DD3BCCAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6A8464F-4305-4BC9-BDF9-2262DD3BCCAB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{540DF514-4393-462A-92B2-5D74F5580921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540DF514-4393-462A-92B2-5D74F5580921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540DF514-4393-462A-92B2-5D74F5580921}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{540DF514-4393-462A-92B2-5D74F5580921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540DF514-4393-462A-92B2-5D74F5580921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540DF514-4393-462A-92B2-5D74F5580921}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{540DF514-4393-462A-92B2-5D74F5580921} = {3483C3D7-46C5-4218-A9B1-F9E0AF59134B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {36D9C67D-E250-4627-AD1C-EE133C56E1AC}
+	EndGlobalSection
+EndGlobal

@@ -7,14 +7,16 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using PokeTuberToolkit.UI.Contracts.Services;
+using PokeTuberToolkit.UI.Contracts.ViewModels;
 using PokeTuberToolkit.UI.Core.Contracts.Services;
+using PokeTuberToolkit.UI.Core.Services;
 using PokeTuberToolkit.UI.Helpers;
 
 using Windows.ApplicationModel;
 
 namespace PokeTuberToolkit.UI.ViewModels;
 
-public partial class SettingsViewModel : ObservableRecipient
+public partial class SettingsViewModel : ObservableRecipient, INavigationAware
 {
     private const string YoutubeChannelHandleSettingsKey = "YoutubeChannelHandleSettingsKey";
 
@@ -52,6 +54,14 @@ public partial class SettingsViewModel : ObservableRecipient
                     await _themeSelectorService.SetThemeAsync(param);
                 }
             });
+    }
+    public async void OnNavigatedTo(object parameter)
+    {
+        YoutubeChannelHandle = await _localSettingsService.ReadSettingAsync<string>(YoutubeChannelHandleSettingsKey);
+    }
+
+    public void OnNavigatedFrom()
+    {
     }
 
     [RelayCommand]

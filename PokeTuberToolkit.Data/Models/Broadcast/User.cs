@@ -5,6 +5,11 @@ public abstract class User
     {
         get; set;
     }
+    public required string Username
+    {
+        get;
+        set;
+    }
     public required Platform Platform
     {
         get; set;
@@ -25,6 +30,11 @@ public abstract class User
 
 public class YouTubeUser : User
 {
+    public required string YouTubeInternalId
+    {
+        get;
+        set;
+    }
     public required bool IsVerified
     {
         get; set;

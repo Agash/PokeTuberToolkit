@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.UI.Xaml;
+using PokeTuberToolkit.Data.Services;
 using PokeTuberToolkit.OBS.WidgetsServer;
 using PokeTuberToolkit.UI.Activation;
 using PokeTuberToolkit.UI.Contracts.Services;
+using PokeTuberToolkit.UI.Core.Contracts;
 using PokeTuberToolkit.UI.Core.Contracts.Services;
 using PokeTuberToolkit.UI.Core.Services;
 using PokeTuberToolkit.UI.Helpers;
@@ -77,7 +79,7 @@ public partial class App : Application
             _ = services.AddSingleton<ISampleDataService, SampleDataService>();
             _ = services.AddSingleton<IFileService, FileService>();
             
-            _ = services.AddYTLiveChat(context);
+            _ = services.AddLiveChat(context.Configuration);
 
             // Views and ViewModels
             _ = services.AddTransient<SettingsViewModel>();
@@ -128,7 +130,8 @@ public partial class App : Application
         base.OnLaunched(args);
 
         _ = App.GetService<IAppNotificationService>().Show(string.Format("AppNotificationSamplePayload".GetLocalized(), AppContext.BaseDirectory));
-
+        
+        await App.GetService<PTTContext>().Database.EnsureCreatedAsync();
         await App.GetService<IActivationService>().ActivateAsync(args);
 
         _ = Task.Run(WidgetServer.Run);

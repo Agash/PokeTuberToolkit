@@ -4,7 +4,7 @@ using PokeTuberToolkit.Data.Models.Broadcast;
 using PokeTuberToolkit.Data.Models.YTPlays;
 
 namespace PokeTuberToolkit.Data.Services;
-public class PTTContext : DbContext
+public class PTTContext(DbContextOptions<PTTContext> options) : DbContext(options)
 {
     public DbSet<Broadcaster> Broadcasters
     {

@@ -11,7 +11,7 @@ using PokeTuberToolkit.UI.Contracts.Services;
 using PokeTuberToolkit.UI.Contracts.ViewModels;
 
 namespace PokeTuberToolkit.UI.ViewModels.YTPlays;
-public partial class BrowserWindowViewModel : ObservableRecipient
+public partial class BrowserWindowViewModel : ObservableRecipient, IDisposable
 {
     // TODO: Set the default URL to display.
     [ObservableProperty]
@@ -22,6 +22,7 @@ public partial class BrowserWindowViewModel : ObservableRecipient
 
     [ObservableProperty]
     private bool hasFailures;
+    private bool disposedValue;
 
     public IPlaywrightWebViewService WebViewService { get; }
 
@@ -29,6 +30,7 @@ public partial class BrowserWindowViewModel : ObservableRecipient
     {
         WebViewService = webViewService;
         WebViewService.StartCdpAsync();
+        WebViewService.NavigationCompleted += OnNavigationCompleted;
     }
 
     [RelayCommand]
@@ -56,8 +58,6 @@ public partial class BrowserWindowViewModel : ObservableRecipient
 
     private bool BrowserCanGoBack() => WebViewService.CanGoBack;
 
-    public void OnNavigatedTo(object parameter) => WebViewService.NavigationCompleted += OnNavigationCompleted;
-
     public void OnNavigatedFrom()
     {
         WebViewService.UnregisterEvents();
@@ -82,5 +82,36 @@ public partial class BrowserWindowViewModel : ObservableRecipient
         HasFailures = false;
         IsLoading = true;
         WebViewService?.Reload();
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposedValue)
+        {
+            if (disposing)
+            {
+                // TODO: dispose managed state (managed objects)
+                WebViewService.UnregisterEvents();
+                WebViewService.NavigationCompleted -= OnNavigationCompleted;
+            }
+
+            // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+            // TODO: set large fields to null
+            disposedValue = true;
+        }
+    }
+
+    // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+    // ~BrowserWindowViewModel()
+    // {
+    //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+    //     Dispose(disposing: false);
+    // }
+
+    public void Dispose()
+    {
+        // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        Dispose(disposing: true);
+        GC.SuppressFinalize(this);
     }
 }

@@ -16,10 +16,16 @@ public partial class YTPlaysViewModel : ObservableRecipient
 
 
     [RelayCommand]
-    private async Task OpenBrowserWindow()
+    private void OpenBrowserWindow()
     {
         BrowserWindow ??= new BrowserWindow();
+        BrowserWindow.Closed += BrowserWindow_Closed;    
 
         BrowserWindow.Activate();
+    }
+
+    private void BrowserWindow_Closed(object sender, Microsoft.UI.Xaml.WindowEventArgs args)
+    {
+        BrowserWindow = null;
     }
 }

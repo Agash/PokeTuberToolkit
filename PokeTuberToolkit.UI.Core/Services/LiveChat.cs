@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using PokeTuberToolkit.Data.Models.Broadcast;
 using PokeTuberToolkit.Data.Services;
+using PokeTuberToolkit.Data.Util;
 using PokeTuberToolkit.UI.Core.Contracts.Services;
 using YTLiveChat.Contracts.Services;
 
@@ -74,7 +75,7 @@ internal class LiveChat : ILiveChat
 
     private async void YTHandleInitialPageLoaded(object? sender, InitialPageLoadedEventArgs e)
     {
-        var broadcaster = await _context.Broadcasters.FirstOrDefaultAsync(b => b.Name.Equals(_broadcaster, StringComparison.InvariantCultureIgnoreCase));
+        var broadcaster = await _context.Broadcasters.FirstOrDefaultAsync(b => b.Name == _broadcaster);
         if (broadcaster == null)
         {
             broadcaster = new Broadcaster { Name = _broadcaster! };
@@ -104,14 +105,49 @@ internal class LiveChat : ILiveChat
         {
             _ytSession.SessionEnd = DateTime.Now;
             await _context.SaveChangesAsync();
+            _ytSession = null;
         }
 
         OnStopped(new StoppedEventArgs { Reason = e.Reason });
     }
 
-    private void YTHandleChatReceived(object? sender, YTLiveChat.Contracts.Services.ChatReceivedEventArgs e)
+    private async void YTHandleChatReceived(object? sender, YTLiveChat.Contracts.Services.ChatReceivedEventArgs e)
     {
-        
+        _ytSession ??= await _context.YouTubeBroadcastingSessions.Where(s => s.SessionEnd == null).OrderByDescending(s => s.SessionStart).FirstOrDefaultAsync() ?? throw new Exception("No valid broadcasting session found but received youtube chat.");
+
+        var user = await _context.YouTubeUsers.FirstOrDefaultAsync(u => u.YouTubeInternalId == e.ChatItem.Author.ChannelId);
+        if(user == null )
+        {
+            user = new YouTubeUser
+            {
+                Username = e.ChatItem.Author.Name,
+                YouTubeInternalId = e.ChatItem.Author.ChannelId,
+                Platform = Platform.YouTube,
+
+                IsMember = e.ChatItem.IsMembership,
+                IsModerator = e.ChatItem.IsModerator,
+                IsSubscriber = false,
+                IsVerified = e.ChatItem.IsVerified,
+            };
+            
+            _context.YouTubeUsers.Add(user);
+
+            // saving here so we get an ID
+            await _context.SaveChangesAsync();
+        }
+
+        var chat = new Message
+        {
+            BroadcastingSessionId = _ytSession.BroadcastingSessionId,
+            UserId = user.UserId,
+            Text = string.Join(" ", e.ChatItem.Message.Select(x => x.ToString())),
+            Timestamp = DateTime.Now,
+        };
+
+        _context.Messages.Add(chat);
+        await _context.SaveChangesAsync();
+
+        OnChatReceived(new Contracts.Services.ChatReceivedEventArgs { Message = chat });
     }
 
     private void YTHandleErrorOccured(object? sender, YTLiveChat.Contracts.Services.ErrorOccurredEventArgs e)

@@ -1,0 +1,10 @@
+{
+  "background_color": "#ffffff",
+  "description": "PokeTuberToolkit.UI.Uno",
+  "display": "standalone",
+  "name": "PokeTuberToolkit.UI.Uno",
+  "short_name": "PokeTuberToolkit.UI.Uno",
+  "start_url": "/index.html",
+  "theme_color": "#ffffff",
+  "scope": "/"
+}
