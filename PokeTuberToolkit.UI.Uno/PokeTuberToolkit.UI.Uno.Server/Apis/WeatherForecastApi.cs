@@ -10,7 +10,7 @@ internal static class WeatherForecastApi
 
     internal static WebApplication MapWeatherApi(this WebApplication app)
     {
-        app.MapGet("/api/weatherforecast", GetForecast)
+        _ = app.MapGet("/api/weatherforecast", GetForecast)
             .WithTags(Tag)
             .WithName(nameof(GetForecast));
         return app;
@@ -27,7 +27,7 @@ internal static class WeatherForecastApi
     [ProducesResponseType(typeof(IEnumerable<WeatherForecast>), 200)]
     private static IEnumerable<WeatherForecast> GetForecast(ILoggerFactory loggerFactory)
     {
-        var logger = loggerFactory.CreateLogger(nameof(WeatherForecastApi));
+        ILogger logger = loggerFactory.CreateLogger(nameof(WeatherForecastApi));
         logger.LogDebug("Getting Weather Forecast.");
 
         return Enumerable.Range(1, 5).Select(index =>

@@ -15,7 +15,7 @@ public partial class App : Application
     protected Window? MainWindow { get; private set; }
     protected IHost? Host { get; private set; }
 
-    protected async override void OnLaunched(LaunchActivatedEventArgs args)
+    protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
         // Load WinUI Resources
         Resources.Build(r => r.Merged(
@@ -24,7 +24,7 @@ public partial class App : Application
         Resources.Build(r => r.Merged(
             new ToolkitResources()));
 
-        var builder = this.CreateBuilder(args)
+        IApplicationBuilder builder = this.CreateBuilder(args)
             // Add navigation support for toolkit controls such as TabBar and NavigationView
             .UseToolkitNavigation()
             .Configure(host => host
@@ -100,13 +100,13 @@ public partial class App : Application
 
     private static void RegisterRoutes(IViewRegistry views, IRouteRegistry routes)
     {
-        views.Register(
+        _ = views.Register(
             new ViewMap(ViewModel: typeof(ShellModel)),
             new ViewMap<MainPage, MainModel>(),
             new DataViewMap<SecondPage, SecondModel, Entity>()
         );
 
-        routes.Register(
+        _ = routes.Register(
             new RouteMap("", View: views.FindByViewModel<ShellModel>(),
                 Nested:
                 [

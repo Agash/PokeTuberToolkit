@@ -1,27 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Android.App;
-using Android.Content;
-using Android.OS;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Com.Nostra13.Universalimageloader.Core;
-using Microsoft.UI.Xaml.Media;
 
-namespace PokeTuberToolkit.UI.Uno.Droid;
-[global::Android.App.ApplicationAttribute(
+namespace PokeTuberToolkit.UI.Uno.Platforms.Android;
+[Application(
     Label = "@string/ApplicationName",
     Icon = "@mipmap/icon",
     LargeHeap = true,
     HardwareAccelerated = true,
     Theme = "@style/AppTheme"
 )]
-public class Application : Microsoft.UI.Xaml.NativeApplication
+public class Application : NativeApplication
 {
-    public Application(IntPtr javaReference, JniHandleOwnership transfer)
+    public Application(nint javaReference, JniHandleOwnership transfer)
         : base(() => new App(), javaReference, transfer)
     {
         ConfigureUniversalImageLoader();

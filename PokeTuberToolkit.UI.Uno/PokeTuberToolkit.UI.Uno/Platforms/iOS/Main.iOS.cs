@@ -1,6 +1,6 @@
 using UIKit;
 
-namespace PokeTuberToolkit.UI.Uno.iOS;
+namespace PokeTuberToolkit.UI.Uno.Platforms.iOS;
 public class EntryPoint
 {
     // This is the main entry point of the application.

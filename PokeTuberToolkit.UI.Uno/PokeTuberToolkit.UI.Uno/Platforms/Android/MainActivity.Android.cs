@@ -1,15 +1,12 @@
 using Android.App;
-using Android.Content.PM;
-using Android.OS;
 using Android.Views;
-using Android.Widget;
 
-namespace PokeTuberToolkit.UI.Uno.Droid;
+namespace PokeTuberToolkit.UI.Uno.Platforms.Android;
 [Activity(
     MainLauncher = true,
-    ConfigurationChanges = global::Uno.UI.ActivityHelper.AllConfigChanges,
+    ConfigurationChanges = ActivityHelper.AllConfigChanges,
     WindowSoftInputMode = SoftInput.AdjustNothing | SoftInput.StateHidden
 )]
-public class MainActivity : Microsoft.UI.Xaml.ApplicationActivity
+public class MainActivity : ApplicationActivity
 {
 }

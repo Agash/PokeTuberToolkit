@@ -1,14 +1,14 @@
-﻿namespace PokeTuberToolkit.UI.Uno.Presentation;
+namespace PokeTuberToolkit.UI.Uno.Presentation;
 
 public sealed partial class Shell : UserControl, IContentControlProvider
 {
     public Shell()
     {
-        this.Content(
+        _ = this.Content(
             new Border()
                 .Child(
                     new ExtendedSplashScreen()
-                        .Name(out var splash)
+                        .Name(out ExtendedSplashScreen? splash)
                         .HorizontalAlignment(HorizontalAlignment.Stretch)
                         .VerticalAlignment(VerticalAlignment.Stretch)
                         .HorizontalContentAlignment(HorizontalAlignment.Stretch)

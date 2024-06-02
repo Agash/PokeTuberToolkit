@@ -21,8 +21,7 @@ public partial record MainModel
 
     public async Task GoToSecond()
     {
-        var name = await Name;
-        await _navigator.NavigateViewModelAsync<SecondModel>(this, data: new Entity(name!));
+        string? name = await Name;
+        _ = await _navigator.NavigateViewModelAsync<SecondModel>(this, data: new Entity(name!));
     }
-
 }

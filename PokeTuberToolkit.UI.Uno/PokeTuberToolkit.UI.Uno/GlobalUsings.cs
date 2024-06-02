@@ -10,5 +10,3 @@ global using PokeTuberToolkit.UI.Uno.Models;
 global using PokeTuberToolkit.UI.Uno.Presentation;
 global using PokeTuberToolkit.UI.Uno.Services.Caching;
 global using PokeTuberToolkit.UI.Uno.Services.Endpoints;
-global using ApplicationExecutionState = Windows.ApplicationModel.Activation.ApplicationExecutionState;
-global using Color = Windows.UI.Color;

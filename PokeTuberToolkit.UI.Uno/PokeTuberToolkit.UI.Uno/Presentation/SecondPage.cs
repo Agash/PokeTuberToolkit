@@ -1,10 +1,10 @@
-﻿namespace PokeTuberToolkit.UI.Uno.Presentation;
+namespace PokeTuberToolkit.UI.Uno.Presentation;
 
 public sealed partial class SecondPage : Page
 {
     public SecondPage()
     {
-        this.DataContext<BindableSecondModel>((page, vm) => page
+        _ = this.DataContext<BindableSecondModel>((page, vm) => page
             .Background(ThemeResource.Get<Brush>("ApplicationPageBackgroundThemeBrush"))
             .Content(new Grid()
                 .SafeArea(SafeArea.InsetMask.All)

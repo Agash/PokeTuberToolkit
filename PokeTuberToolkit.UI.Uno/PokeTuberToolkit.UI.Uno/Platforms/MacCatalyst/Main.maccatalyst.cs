@@ -1,6 +1,6 @@
 using UIKit;
 
-namespace PokeTuberToolkit.UI.Uno.MacCatalyst;
+namespace PokeTuberToolkit.UI.Uno.Platforms.MacCatalyst;
 public class EntryPoint
 {
     // This is the main entry point of the application.

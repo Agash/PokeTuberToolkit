@@ -1,10 +1,10 @@
-﻿namespace PokeTuberToolkit.UI.Uno.Presentation;
+namespace PokeTuberToolkit.UI.Uno.Presentation;
 
 public sealed partial class MainPage : Page
 {
     public MainPage()
     {
-        this.DataContext<BindableMainModel>((page, vm) => page
+        _ = this.DataContext<BindableMainModel>((page, vm) => page
             .NavigationCacheMode(NavigationCacheMode.Required)
             .Background(ThemeResource.Get<Brush>("ApplicationPageBackgroundThemeBrush"))
             .Content(new Grid()
